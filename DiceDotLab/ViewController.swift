@@ -37,6 +37,7 @@ class ViewController: UIViewController {
     var hiHit = 0
     var randomNumber: UInt32!
     var pintinho = false
+    var colorState = 3
     
     
     @IBOutlet weak var pintinhoView: UIImageView!
@@ -155,10 +156,81 @@ class ViewController: UIViewController {
             
         }
         
+        let colorREMINDER = UserDefaults.standard.object(forKey: "colorState")
+        
+        if let z = colorREMINDER as? Int{
+            
+            colorState = z
+            
+        }
+        
+        if colorState == 1 {
+            
+            self.view.backgroundColor = UIColor.yellow
+            self.v1.backgroundColor = UIColor.black
+            self.v2.backgroundColor = UIColor.black
+            self.v3.backgroundColor = UIColor.black
+            self.v4.backgroundColor = UIColor.black
+            self.v5.backgroundColor = UIColor.black
+            self.v6.backgroundColor = UIColor.black
+            self.v7.backgroundColor = UIColor.black
+            self.placar.textColor = UIColor.black
+            self.high.textColor = UIColor.black
+            
+        }
+        
+        if colorState == 2 {
+            
+            self.view.backgroundColor = UIColor.black
+            self.v1.backgroundColor = UIColor.red
+            self.v2.backgroundColor = UIColor.red
+            self.v3.backgroundColor = UIColor.red
+            self.v4.backgroundColor = UIColor.red
+            self.v5.backgroundColor = UIColor.red
+            self.v6.backgroundColor = UIColor.red
+            self.v7.backgroundColor = UIColor.red
+            self.placar.textColor = UIColor.red
+            self.high.textColor = UIColor.red
+            
+        }
+        
+        if colorState == 3 {
+            
+            self.view.backgroundColor = UIColor.white
+            self.v1.backgroundColor = UIColor.black
+            self.v2.backgroundColor = UIColor.black
+            self.v3.backgroundColor = UIColor.black
+            self.v4.backgroundColor = UIColor.black
+            self.v5.backgroundColor = UIColor.black
+            self.v6.backgroundColor = UIColor.black
+            self.v7.backgroundColor = UIColor.black
+            self.placar.textColor = UIColor.black
+            self.high.textColor = UIColor.black
+            
+        }
+        
+        if colorState == 4 {
+            
+            self.view.backgroundColor = UIColor.green
+            self.v1.backgroundColor = UIColor.black
+            self.v2.backgroundColor = UIColor.black
+            self.v3.backgroundColor = UIColor.black
+            self.v4.backgroundColor = UIColor.black
+            self.v5.backgroundColor = UIColor.black
+            self.v6.backgroundColor = UIColor.black
+            self.v7.backgroundColor = UIColor.black
+            self.placar.textColor = UIColor.black
+            self.high.textColor = UIColor.black
+            
+        }
+        
+        
+        
+        
         high.text = String(hiHit) + "x" + String(ancientState)
         
-        print(currentState)
-        print(hiHit)
+        //print(currentState)
+        //print(hiHit)
         
     }
     
@@ -175,6 +247,8 @@ class ViewController: UIViewController {
             self.v7.backgroundColor = UIColor.black
             self.placar.textColor = UIColor.black
             self.high.textColor = UIColor.black
+            self.colorState = 1
+            UserDefaults.standard.set(colorState, forKey: "colorState")
         }
         if gesture.direction == UISwipeGestureRecognizerDirection.left{
             self.view.backgroundColor = UIColor.black
@@ -187,6 +261,8 @@ class ViewController: UIViewController {
             self.v7.backgroundColor = UIColor.red
             self.placar.textColor = UIColor.red
             self.high.textColor = UIColor.red
+            self.colorState = 2
+            UserDefaults.standard.set(colorState, forKey: "colorState")
         }
         if gesture.direction == UISwipeGestureRecognizerDirection.down{
             
@@ -200,6 +276,8 @@ class ViewController: UIViewController {
             self.v7.backgroundColor = UIColor.black
             self.placar.textColor = UIColor.black
             self.high.textColor = UIColor.black
+            self.colorState = 3
+            UserDefaults.standard.set(colorState, forKey: "colorState")
         }
         if gesture.direction == UISwipeGestureRecognizerDirection.up{
             
@@ -213,6 +291,8 @@ class ViewController: UIViewController {
             self.v7.backgroundColor = UIColor.black
             self.placar.textColor = UIColor.black
             self.high.textColor = UIColor.black
+            self.colorState = 4
+            UserDefaults.standard.set(colorState, forKey: "colorState")
         }
         
     }
@@ -222,7 +302,7 @@ class ViewController: UIViewController {
             
             self.randomNumber = arc4random_uniform(6) + 1
             
-            print("Numero sorteado " + String(randomNumber))
+           // print("Numero sorteado " + String(randomNumber))
             
             while(currentState != randomNumber){
                 
@@ -367,7 +447,7 @@ class ViewController: UIViewController {
             
             
             placar.text = String(hit) + "x" + String(currentState)
-            print("Estado atual " + String(currentState))
+           // print("Estado atual " + String(currentState))
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             
         }
