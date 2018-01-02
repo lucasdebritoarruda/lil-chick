@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:DiceDotLab.xcodeproj">
+      location = "container:">
+   </FileRef>
+   <FileRef
+      location = "group:Pintinho.png">
    </FileRef>
 </Workspace>
