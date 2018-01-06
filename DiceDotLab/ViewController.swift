@@ -434,8 +434,9 @@ class ViewController: UIViewController {
             
             if(currentState == previousState){
                 hit+=1
-                if hit > hiHit{
+                if (hit > hiHit) || ((hit == hiHit)&&(currentState>ancientState)){
                     hiHit = hit
+                    ancientState = currentState
                     high.text = String(hiHit) + "x" + String(currentState)
                     UserDefaults.standard.set(hiHit, forKey: "hiHit")
                     UserDefaults.standard.set(currentState, forKey: "hiHitValue")
